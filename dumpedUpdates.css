@@ -1,0 +1,232 @@
+/* dumpedUpdates.css */
+
+body {
+	padding: 0;
+	margin: 0;
+	font-family: sans-serif;
+}
+body::before {
+	display: block;
+	position: fixed;
+	top: 0; bottom: 0;
+	left: 0; right: 0;
+	background-color: rgba(0,0,0,.5);
+	color: white;
+	font-size: 2em;
+	font-weight: bold;
+	text-align: center;
+	padding: 25%;
+	z-index: 10;
+}
+body.working::before {
+	content: 'Please Wait';
+}
+
+header h3 {
+	display: block;
+	text-align: center;
+	margin: 0;
+	margin-top: 5px;
+	font-size: 1em;
+	font-weight: normal;
+}
+header h1, header h2 {
+	margin: 0;
+	text-align: center;
+}
+header h2 {
+	font-size: 1em;
+}
+header p {
+    margin: 0;
+}
+header h4 {
+    position: absolute;
+    font-size: 1em;
+    font-weight: normal;
+    padding: 0;
+    margin: 0;
+    left: 2em;
+}
+
+updates { 
+	display: table;
+	margin: 0 30px 10px;
+} 
+updates > up { 
+	display: table-row; 
+}
+updates > up:nth-child(odd) { 
+	background-color: #eeeeee;
+}
+updates > up[striken] > div {
+	text-decoration: line-through;
+}
+
+updates > up > date,
+updates > up > author,
+updates > up > div
+{
+	display: table-cell;
+	padding: 0 6px;
+}
+updates > up > date {
+    white-space: nowrap;
+    font-size: 0.75em;
+    font-family: monospace;
+    text-align: center;
+    vertical-align: top;
+    padding-top: 0.75em;
+    border-right: 1px solid #dddddd;
+}
+updates > up > date > a {
+    text-decoration: none;
+    color: initial;
+}
+updates > up > date > a:hover {
+    text-decoration: underline;
+    color: rgb(0, 0, 238);
+}
+updates > up > div p {
+    margin: 0.8em 0;
+}
+updates > up > div {
+	/* Do not let a long pasted links or yaycupcake's doritos expand the page needlessly. */
+    word-break: break-word;
+}
+updates > up > author {
+	border-left: 1px solid #dddddd;
+}
+updates > up > div span.note {
+    background-color: yellow;
+    display: inline-block;
+    float: right;
+}
+updates > up > div .note::before {
+	content: 'Archive Note: ';
+}
+
+aside {
+    position: fixed;
+	top: 10px; left: -1px;
+	/*min-height: 300px;*/
+	max-height: 96%;
+    background-color: white;
+    border: 1px solid black;
+    border-left: none;
+    border-radius: 0 10px 10px 0;
+}
+aside > div {
+	display: none;
+	padding: 5px 5px 5px 26px;
+	overflow-y: auto;
+	max-height: -moz-available;
+	max-height: -webkit-fill-available;
+	max-height: fill-available;
+}
+aside > div.selected {
+	display: block;
+}
+aside > div.md,
+aside > div.notes {
+	width: 400px;
+}
+aside > nav {
+	position: absolute;
+	display: block;
+    height: 21px; width: 300px;
+    top: 300px; left: -1px;
+    transform-origin: top left;
+    transform: rotate(-90deg);
+    font-family: monospace;
+}
+aside > nav li {
+	float: right;
+	list-style: none;
+	margin: 0;
+	padding: 2px 10px;
+	border: 1px solid black;
+	border-radius: 0px 0px 6px 6px;
+	margin-left: -1px;
+	cursor: pointer;
+	background-color: white;
+}
+aside > nav li.selected {
+	color: white;
+	background-color: #525252;
+}
+aside .toolbox div {
+	margin: 3px 0;
+}
+
+aside table {
+	width: 100%;
+}
+aside table td {
+	border: 1px solid #dddddd;
+}
+aside table td:empty {
+	border: none;
+}
+.ustats table td:nth-child(2) {
+	text-align: center;
+}
+.ustats table td:nth-child(3),
+.ustats table td:nth-child(4) {
+	text-align: right;
+}
+.ustats table tr.bot td,
+.ustats table td:nth-child(4) {
+	color: #dddddd;
+}
+.ustats table tr.deleted td:nth-child(1) {
+    font-style: italic;
+}
+
+article season {
+	display: block;
+	background-color: #ffffff;
+	margin: 0 30px 10px;
+}
+article season:nth-child(odd) { 
+	background-color: #eeeeee;
+}
+article season::before {
+	content: 'Season 'attr(num);
+	display: block;
+}
+article season > updater {
+	display: block;
+	padding: 0.2em 1.2em;
+}
+article season > updater.intermission {
+	padding: 0.2em 3.2em;
+}
+article season > updater:nth-child(odd) { 
+}
+updater h1 {
+	display: block;
+	font-size: 1em;
+	font-weight: normal;
+	padding-left: 0;
+	margin: 0;
+}
+updater h1 a::before { content: 'Twitch Plays Pokémon '; }
+updater h1 a::after { content: ' Updater'; }
+updater.intermission h1 a::before { content: 'Intermission - '; }
+updater.intermission h1 a::after { content: none; }
+updater h1::before {
+	content: url(pokeball.svg);
+	display: inline-block;
+    vertical-align: middle;
+	width: 0.8em;
+    margin-right: 0.3em;
+}
+
+updater p {
+    font-size: 0.8em;
+    margin: 0.5em 1em 0.5em 3em;
+}
+updater p:last-child {
+    margin-bottom: 1em;
+}
