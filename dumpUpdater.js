@@ -168,9 +168,9 @@ function makeUpdate(data) {
 	const { 
 		body_html:body, 
 		created_utc:timestamp,
-		author, striken, id,
+		author, stricken, id,
 	} = data;
-	return { timestamp, body, author, striken, id, };
+	return { timestamp, body, author, stricken, id, };
 }
 
 function unescapeHtml(str) {
@@ -240,12 +240,13 @@ const TAG_DICT = (()=>{
 				attrs.push(`id="${update.id}"`);
 				attrs.push(`ts="${update.timestamp}"`);
 				attrs.push(`auth="${update.author||''}"`);
-				if (update.stroken) attrs.push(`striken="true"`);
+				if (update.stricken) attrs.push(`stricken`);
 				
 				let str = unescapeHtml(update.body);
 				str = str.replace(/>\n/g, '>').replace(/>\n/g, '>');//.replace(/\n/g, ' '); //remove errant newlines
 				str = escapeReddit(str);
 				str = str.replace('div class="md"', "div"); //remove md classes
+				// OUT.println(`\t\t<!-- ${JSON.stringify(update)} -->`);
 				OUT.println(`\t\t<${TAG_DICT['update']} ${attrs.join(' ')}>${str}</${TAG_DICT['update']}>`);
 			}
 			process.stderr.write('.');

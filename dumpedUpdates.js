@@ -95,9 +95,10 @@ $(function(){
 		{
 			var $b = $('<button>').text('Time Sort').on('click', btnTimeSort);
 			$('<div>').text(' Reverse the order of the updates').prepend($b).appendTo($tools);
-		}{
-			// var $b = $('<button>').text('Calculate Updater Stats').on('click', calcUpdaterStats);
-			// $('<div>').text(' ').prepend($b).appendTo($tools);
+		}
+		if ($('.sprite-embed').length) {
+			var $b = $('<button>').text('Embed All Sprites').on('click', btnSpriteEmbed);
+			$('<div>').text(' Embed all [Sprite] images.').prepend($b).appendTo($tools);
 		}
 	}{
 		$('<li class="stats">Stats</li>').appendTo($nav);
@@ -147,7 +148,12 @@ $(function(){
 	}
 	//*/
 	$('aside > nav li').on('click', navclick);
-	$('header').prepend('<h4><a href="index.php">&lt; Home</a></h4>');
+	$('header').prepend('<h4><a href="/">&lt; Home</a></h4>');
+	
+	$('#enablePokedexBtn').on('click', function(){
+		$('body').addClass('fusionembed').prepend('<iframe id="fusionembed" name="fusionembed" src="pokedex.html" />');
+		$('#enablePokedexBtn').prop('disabled', true);
+	});
 });
 
 function navclick() {
@@ -189,6 +195,17 @@ function btnTimeSort() {
 	$('body').addClass('working');
 	setTimeout(function(){
 		$('updates').append( $('updates').children().detach().get().reverse() );
+		$('body').removeClass('working');
+	}, 0);
+}
+
+function btnSpriteEmbed() {
+	$('body').addClass('working');
+	setTimeout(function(){
+		$('.sprite-embed').each(function(i, x){
+			var url = $(x).text();
+			$(x).html('<img src="'+url+'"/>');
+		});
 		$('body').removeClass('working');
 	}, 0);
 }

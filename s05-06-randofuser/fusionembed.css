@@ -1,0 +1,11 @@
+body.fusionembed {
+	margin-right: 230px;
+}
+#fusionembed {
+	position: fixed;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	width: 240px;
+	height: 100%;
+}
