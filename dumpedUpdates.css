@@ -59,7 +59,7 @@ updates > up {
 updates > up:nth-child(odd) { 
 	background-color: #eeeeee;
 }
-updates > up[striken] > div {
+updates > up[stricken] > div {
 	text-decoration: line-through;
 }
 
