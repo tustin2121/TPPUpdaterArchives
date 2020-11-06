@@ -1,0 +1,1 @@
+/home/showdown/client/js
